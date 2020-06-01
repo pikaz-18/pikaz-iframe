@@ -1,10 +1,27 @@
 {
   "name": "pikaz-iframe",
   "version": "0.1.0",
-  "private": true,
+  "description": "A Excel Component for Vue.js",
+  "private": false,
+  "keywords": [
+    "iframe",
+    "vue",
+    "components"
+  ],
+  "license": "MIT",
+  "author": "pikaz",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "serve": "vue-cli-service serve src/example/main.js",
+    "example": "vue-cli-service build --dest example src/example/main.js",
+    "lib": "vue-cli-service build --target lib --name pikaz-iframe --dest lib src/plugin/index.js",
+    "build": "vue-cli-service build --target lib --name pikaz-iframe --dest lib src/plugin/index.js && vue-cli-service build --dest example src/example/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pikaz-18/pikaz-iframe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pikaz-18/pikaz-iframe/issues"
   },
   "dependencies": {
     "core-js": "^3.6.5",

@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:42
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-01 14:44:46
+ * @LastEditTime: 2020-06-01 17:55:24
  * @Description: 这是XXX组件（页面）
 --> 
 <template>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Example from '../example'
+import Example from './component/index'
 export default {
   name: 'App',
   components: {

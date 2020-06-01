@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:42:17
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-01 17:40:46
+ * @LastEditTime: 2020-06-01 17:55:36
  * @Description: 这是iframe-demo组件（页面）
 --> 
 <template>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { PikazIframe } from '../src/plugin/index'
+import { PikazIframe } from '../../plugin'
 import { doc } from './socdoc'
 export default {
   props: {},
