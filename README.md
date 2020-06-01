@@ -1,19 +1,15 @@
-# pikaz-iframe
+<!--
+ * @Author: zouzheng
+ * @Date: 2020-06-01 14:05:47
+ * @LastEditors: zouzheng
+ * @LastEditTime: 2020-06-01 18:03:34
+ * @Description: 这是XXX组件（页面）
+--> 
+## Introduction
 
-## Project setup
-```
-npm install
-```
+基于vue封装的一个iframe插件
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Features
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+* 带有默认设置，方便使用iframe，可设置是否隐藏滚动条。
+* 可修改传入的HTML内容样式。
