@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:42:17
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-02 17:20:29
+ * @LastEditTime: 2020-06-02 17:34:36
  * @Description: 这是iframe-demo组件（页面）
 --> 
 <template>
@@ -10,7 +10,7 @@
     <div class="layout-item">
       <h4>传入url</h4>
       <div class="demo">
-        <pikaz-iframe :onload="onload(1)" :src="src">
+        <pikaz-iframe :onpikaz-iframeload="onload(1)" :src="src">
         </pikaz-iframe>
       </div>
     </div>
