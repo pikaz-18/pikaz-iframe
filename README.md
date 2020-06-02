@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:47
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-02 17:52:35
+ * @LastEditTime: 2020-06-02 18:11:25
  * @Description: 这是XXX组件（页面）
 --> 
 ## Introduction
@@ -15,7 +15,7 @@
 
 ## [demo](https://pikaz-18.github.io/pikaz-iframe/example/index.html)
 
-### [demo代码](https://github.com/pikaz-18/pikaz-iframe/tree/master/src/example/component)
+### [demo代码](https://github.com/pikaz-18/pikaz-iframe/tree/master/src/example/components)
 
 ## Installation
 
