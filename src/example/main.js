@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:42
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-01 17:55:53
+ * @LastEditTime: 2020-06-02 16:47:12
  * @Description: 这是XXX组件（页面）
  */
 import Vue from 'vue'

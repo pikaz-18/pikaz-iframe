@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 16:29:10
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-01 17:05:14
+ * @LastEditTime: 2020-06-02 15:49:16
  * @Description: 这是html内容组件（页面）
  */
 export const doc = `<!DOCTYPE html>
@@ -14,7 +14,6 @@ export const doc = `<!DOCTYPE html>
     <title>demo</title>
     <style>
     div{
-      color:red;
       font-size:20px;
       border-bottom:1px solid lightgray;
     }

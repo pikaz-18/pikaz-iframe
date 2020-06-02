@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:24:51
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-01 17:48:42
+ * @LastEditTime: 2020-06-02 17:21:52
  * @Description: 这是iframe组件（页面）
 --> 
 <template>
@@ -47,9 +47,11 @@ export default {
       type: [String, Boolean],
       default: false
     },
-    // 加载完成事件
+    // 加载完成钩子
     onload: {
-      type: Function
+      type: Function,
+      default: () => {
+      }
     },
     // 添加样式
     css: {
@@ -64,7 +66,6 @@ export default {
   created () {
   },
   mounted () {
-    this.iframeOnload()
   },
   methods: {
     /**
@@ -80,10 +81,7 @@ export default {
           that.onload()
         }
       })
-    },
-    addCss () {
-
-    },
+    }
   },
   computed: {
     // 使用computed方便后续做改动
@@ -105,10 +103,11 @@ export default {
     },
     // iframe html
     iframeSrcdoc () {
-      if (this.css) {
+      if (this.css && this.srcdoc) {
         // 查找head标签
         const pattern = "<head.*(?=>)(.|\n)*?</head>"
         const html = this.srcdoc.match(pattern)[0]
+        // 插入style
         const style = `<style>${this.css}</style></head>`
         const newHtml = html.replace("</head>", style)
         const doc = this.srcdoc.replace(html, newHtml)
@@ -131,7 +130,20 @@ export default {
       }
     }
   },
-  watch: {},
+  watch: {
+    src: {
+      handler (val) {
+        this.iframeOnload()
+      },
+      immediate: true
+    },
+    srcdoc: {
+      handler (val) {
+        this.iframeOnload()
+      },
+      immediate: true
+    }
+  }
 }
 </script>
 
@@ -145,10 +157,6 @@ export default {
   display: none;
 }
 #pikazIframe {
-  width: 100%;
-  height: 100%;
-}
-.pikazHtml {
   width: 100%;
   height: 100%;
 }
