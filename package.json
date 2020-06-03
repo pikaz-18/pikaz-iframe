@@ -9,6 +9,10 @@
     "vue",
     "components"
   ],
+  "files": [
+    "lib",
+    "example"
+  ],
   "license": "MIT",
   "author": "pikaz",
   "scripts": {
