@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:47
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 11:47:23
+ * @LastEditTime: 2020-06-04 13:35:56
  * @Description: 这是XXX组件（页面）
 --> 
 ## Introduction
@@ -68,4 +68,4 @@ css|传入html内容时，需修改的css样式，如"div{color:red;}"|string|--
 #### Events
 事件名称|说明|回调参数
 -|-|-
-onload|iframe加载完成|--
+onload|iframe加载完成时触发|--
