@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:47
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 11:09:37
+ * @LastEditTime: 2020-06-04 11:47:23
  * @Description: 这是XXX组件（页面）
 --> 
 ## Introduction
@@ -64,3 +64,8 @@ hideScrolling|是否隐藏滚动条，传入true默认隐藏18px宽的滚动条�
 onload|iframe加载完成时的钩子|funtion|--|--
 css|传入html内容时，需修改的css样式，如"div{color:red;}"|string|--|--
 更多设置选项请查看[MDN-iframe](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
+
+#### Events
+事件名称|说明|回调参数
+-|-|-
+onload|iframe加载完成|--

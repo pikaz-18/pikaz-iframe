@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:24:51
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 11:04:13
+ * @LastEditTime: 2020-06-04 11:44:54
  * @Description: 这是iframe组件（页面）
 --> 
 <script>
@@ -21,12 +21,6 @@ export default {
     // hideScrolling: {
     //   type: [String, Boolean],
     //   default: false
-    // },
-    // // 加载完成钩子
-    // onload: {
-    //   type: Function,
-    //   default: () => {
-    //   }
     // },
     // // 添加样式
     // css: {
@@ -49,6 +43,7 @@ export default {
   created () {
   },
   mounted () {
+    this.iframeOnload()
   },
   methods: {
     /**
@@ -61,7 +56,7 @@ export default {
         const iframe = document.getElementById("pikazIframe");
         const that = this
         iframe.onload = function () {
-          that.setting.onload && that.setting.onload()
+          that.$emit("onload")
         }
       })
     }
@@ -85,7 +80,7 @@ export default {
           attr[key] = this.setting[key]
         }
         // 处理css样式
-        if (key === 'srcdoc' && this.setting.css) {
+        if (key === 'srcdoc' && this.setting.css && this.setting.srcdoc) {
           // 查找head标签
           const pattern = "<head.*(?=>)(.|\n)*?</head>"
           const html = this.setting.srcdoc.match(pattern)[0]
@@ -111,13 +106,13 @@ export default {
   watch: {
     src: {
       handler (val) {
-        this.iframeOnload()
+        val && this.iframeOnload()
       },
       immediate: true
     },
     srcdoc: {
       handler (val) {
-        this.iframeOnload()
+        val && this.iframeOnload()
       },
       immediate: true
     }

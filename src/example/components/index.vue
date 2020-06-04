@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:42:17
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 11:05:36
+ * @LastEditTime: 2020-06-04 11:35:23
  * @Description: 这是iframe-demo组件（页面）
 --> 
 <template>
@@ -38,7 +38,7 @@
     <div class="layout-item">
       <h4>onload事件</h4>
       <div class="demo">
-        <pikaz-iframe :setting="setting5">
+        <pikaz-iframe :setting="setting5" @onload="onload">
         </pikaz-iframe>
       </div>
     </div>
@@ -83,10 +83,7 @@ export default {
       `
       },
       setting5: {
-        src: "https://m.baidu.com/",
-        onload: () => {
-          console.log("载入成功")
-        }
+        src: "https://m.baidu.com/"
       }
     }
   },
@@ -95,6 +92,9 @@ export default {
   mounted () {
   },
   methods: {
+    onload () {
+      console.log("加载成功")
+    }
   },
   computed: {},
   watch: {},
