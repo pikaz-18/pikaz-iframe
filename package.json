@@ -1,6 +1,6 @@
 {
   "name": "pikaz-iframe",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A Iframe Component for Vue.js",
   "private": false,
   "main": "lib/pikaz-iframe.umd.min.js",
