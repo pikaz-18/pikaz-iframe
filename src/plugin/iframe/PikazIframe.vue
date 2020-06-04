@@ -2,63 +2,46 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:24:51
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-02 17:50:44
+ * @LastEditTime: 2020-06-04 11:04:13
  * @Description: 这是iframe组件（页面）
 --> 
-<template>
-  <div id="pikaz-iframe-container">
-    <iframe :name="iframeName" :sandbox="iframeSandbox" :scrolling="iframeScrolling" :src="iframeSrc"
-      :srcdoc="iframeSrcdoc" :frameborder="iframeFrameborder" id="pikazIframe" :style="hideScrollBar">
-    </iframe>
-  </div>
-</template>
-
 <script>
 export default {
   props: {
-    // iframe name
-    name: {
-      type: String
-    },
-    frameborder: {
-      type: Number,
-      default: 0
-    },
-    // iframe限制
-    sandbox: {
-      type: String,
-      default: "allow-same-origin allow-scripts"
-    },
-    // iframe是否可以滚动
-    scrolling: {
-      type: String,
-      default: "auto"
-    },
+    // setting配置
     // iframe url
-    src: {
-      type: String
-    },
-    // html内容
-    srcdoc: {
-      type: String
-    },
-    // 是否隐藏滚动条
-    hideScrolling: {
-      type: [String, Boolean],
-      default: false
-    },
-    // 加载完成钩子
-    onload: {
-      type: Function,
-      default: () => {
-      }
-    },
-    // 添加样式
-    css: {
-      type: String
-    }
+    // src: {
+    //   type: String
+    // },
+    // // html内容
+    // srcdoc: {
+    //   type: String
+    // },
+    // // 是否隐藏滚动条
+    // hideScrolling: {
+    //   type: [String, Boolean],
+    //   default: false
+    // },
+    // // 加载完成钩子
+    // onload: {
+    //   type: Function,
+    //   default: () => {
+    //   }
+    // },
+    // // 添加样式
+    // css: {
+    //   type: String
+    // }
+    setting: Object
   },
-  components: {},
+  render () {
+    return (
+      <div id="pikaz-iframe-container">
+        <iframe {...{ attrs: this.attrs }} style={this.hideScrollBar} id="pikazIframe">
+        </iframe>
+      </div>
+    );
+  },
   data () {
     return {
     }
@@ -78,47 +61,12 @@ export default {
         const iframe = document.getElementById("pikazIframe");
         const that = this
         iframe.onload = function () {
-          that.onload()
+          that.setting.onload && that.setting.onload()
         }
       })
     }
   },
   computed: {
-    // 使用computed方便后续做改动
-    // iframe name
-    iframeName () {
-      return this.name
-    },
-    // iframe限制
-    iframeSandbox () {
-      return this.sandbox
-    },
-    // iframe是否可以滚动
-    iframeScrolling () {
-      return this.scrolling
-    },
-    // iframe url
-    iframeSrc () {
-      return this.src
-    },
-    // iframe html
-    iframeSrcdoc () {
-      if (this.css && this.srcdoc) {
-        // 查找head标签
-        const pattern = "<head.*(?=>)(.|\n)*?</head>"
-        const html = this.srcdoc.match(pattern)[0]
-        // 插入style
-        const style = `<style>${this.css}</style></head>`
-        const newHtml = html.replace("</head>", style)
-        const doc = this.srcdoc.replace(html, newHtml)
-        return doc
-      }
-      return this.srcdoc
-    },
-    // iframe 是否有边框
-    iframeFrameborder () {
-      return this.frameborder
-    },
     // 是否隐藏滚动条
     hideScrollBar () {
       if (this.hideScrolling) {
@@ -128,6 +76,36 @@ export default {
           return { width: `calc(100% + 18px)` }
         }
       }
+    },
+    // iframe参数处理
+    attrs () {
+      const attr = {}
+      Object.keys(this.setting).forEach(key => {
+        if (key !== 'hideScrolling' || key !== 'onload' || key !== 'css') {
+          attr[key] = this.setting[key]
+        }
+        // 处理css样式
+        if (key === 'srcdoc' && this.setting.css) {
+          // 查找head标签
+          const pattern = "<head.*(?=>)(.|\n)*?</head>"
+          const html = this.setting.srcdoc.match(pattern)[0]
+          // 插入style
+          const style = `<style>${this.setting.css}</style></head>`
+          const newHtml = html.replace("</head>", style)
+          const doc = this.setting.srcdoc.replace(html, newHtml)
+          attr[key] = doc
+        }
+      })
+
+      // 设置默认值
+      if (!attr.sandbox || attr.sandbox !== '') {
+        attr.sandbox = 'allow-same-origin allow-scripts'
+      }
+      // 无边框
+      if (!attr.frameborder) {
+        attr.frameborder = 0
+      }
+      return attr
     }
   },
   watch: {

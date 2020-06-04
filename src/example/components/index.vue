@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:42:17
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-03 10:01:35
+ * @LastEditTime: 2020-06-04 11:05:36
  * @Description: 这是iframe-demo组件（页面）
 --> 
 <template>
@@ -10,36 +10,35 @@
     <div class="layout-item">
       <h4>传入url</h4>
       <div class="demo">
-        <pikaz-iframe :onpikaz-iframeload="onload(1)" :src="src">
+        <pikaz-iframe :setting="setting1">
         </pikaz-iframe>
       </div>
     </div>
     <div class="layout-item">
       <h4>传入html内容</h4>
       <div class="demo">
-        <pikaz-iframe :onload="onload(2)" :srcdoc="srcdoc">
+        <pikaz-iframe :setting="setting2">
         </pikaz-iframe>
       </div>
     </div>
     <div class="layout-item">
       <h4>传入html内容并隐藏滚动条</h4>
       <div class="demo">
-        <pikaz-iframe :onload="onload(3)" :srcdoc="srcdoc" :hideScrolling="true">
+        <pikaz-iframe :setting="setting3">
         </pikaz-iframe>
       </div>
     </div>
     <div class="layout-item">
       <h4>传入html内容并修改样式</h4>
       <div class="demo">
-        <pikaz-iframe :onload="onload(4)" :srcdoc="srcdoc" :css="css">
+        <pikaz-iframe :setting="setting4">
         </pikaz-iframe>
       </div>
     </div>
     <div class="layout-item">
-      <h4>添加loading</h4>
+      <h4>onload事件</h4>
       <div class="demo">
-        <pikaz-iframe :onload="onload(5)" :src="src">
-          <div class="loading">加载中</div>
+        <pikaz-iframe :setting="setting5">
         </pikaz-iframe>
       </div>
     </div>
@@ -54,9 +53,19 @@ export default {
   components: { PikazIframe },
   data () {
     return {
-      src: "https://m.baidu.com/",
-      srcdoc: doc,
-      css: `
+      setting1: {
+        src: "https://m.baidu.com/"
+      },
+      setting2: {
+        srcdoc: doc
+      },
+      setting3: {
+        hideScrolling: true,
+        srcdoc: doc
+      },
+      setting4: {
+        srcdoc: doc,
+        css: `
       div{color:red;}
     body::-webkit-scrollbar {width:5px;}
     body::-webkit-scrollbar-track {
@@ -72,6 +81,13 @@ export default {
   border-radius: 2em;
 }
       `
+      },
+      setting5: {
+        src: "https://m.baidu.com/",
+        onload: () => {
+          console.log("载入成功")
+        }
+      }
     }
   },
   created () {
@@ -79,9 +95,6 @@ export default {
   mounted () {
   },
   methods: {
-    onload (index) {
-      console.log(`第${index}个iframe载入成功`)
-    }
   },
   computed: {},
   watch: {},
