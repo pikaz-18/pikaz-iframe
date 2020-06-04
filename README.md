@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:47
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 10:54:43
+ * @LastEditTime: 2020-06-04 11:09:37
  * @Description: 这是XXX组件（页面）
 --> 
 ## Introduction
@@ -29,7 +29,7 @@ npm i -S pikaz-iframe
 
 ## For Vue-cli
 ``` html
-<pikaz-iframe :onload="onload" :src="src">
+<pikaz-iframe :setting="setting">
 </pikaz-iframe>
 ```
 .vue file:
@@ -42,18 +42,18 @@ npm i -S pikaz-iframe
         },
         data () {
           return {
-            src: "https://m.baidu.com/"
-          }
-        },
-        methods: {
-          onload (index) {
-            console.log("载入成功")
+            setting:{
+              src: "https://m.baidu.com/",
+              onload: ()=> {
+                console.log("载入成功")
+              }
+            }
           }
         }
   ...
 ```
 
-#### Attributes:
+#### setting参数:
 参数|说明|类型|可选值|默认值
 -|-|-|-|-
 frameborder|是否显示框架周围的边框|number|0/1|0
