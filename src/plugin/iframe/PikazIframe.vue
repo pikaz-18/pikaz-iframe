@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:24:51
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-05 11:20:23
+ * @LastEditTime: 2020-06-05 13:54:58
  * @Description: 这是iframe组件（页面）
 --> 
 <script>
@@ -95,7 +95,12 @@ export default {
 
       // 设置默认值
       if (!attr.sandbox || attr.sandbox !== '') {
-        attr.sandbox = 'allow-same-origin allow-scripts'
+        // 同源文档
+        if (this.setting.srcdoc) {
+          attr.sandbox = 'allow-scripts'
+        } else {
+          attr.sandbox = 'allow-same-origin allow-scripts'
+        }
       }
       // 无边框
       if (!attr.frameborder) {

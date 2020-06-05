@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:05:47
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 13:35:56
+ * @LastEditTime: 2020-06-05 13:56:58
  * @Description: 这是XXX组件（页面）
 --> 
 ## Introduction
@@ -57,7 +57,7 @@ npm i -S pikaz-iframe
 参数|说明|类型|可选值|默认值
 -|-|-|-|-
 frameborder|是否显示框架周围的边框|number|0/1|0
-sandbox|启用iframe中内容的额外限制,传入空字符串则对所有权限做限制，具体查看[MDN-iframe](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)|string|""/allow-forms/allow-same-origin/allow-scripts/allow-top-navigation等|"allow-same-origin allow-scripts"
+sandbox|启用iframe中内容的额外限制,传入空字符串则对所有权限做限制，具体查看[MDN-iframe](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)|string|""/allow-forms/allow-same-origin/allow-scripts/allow-top-navigation等|传入src时默认为"allow-same-origin allow-scripts"，传入srcdoc时默认为"allow-scripts"
 src|被嵌套的页面的 URL 地址|string|--|--
 srcdoc|html内容|string|--|--
 hideScrolling|是否隐藏滚动条，传入true默认隐藏18px宽的滚动条，如需隐藏其他宽度滚动条，则传入宽度如"20px"|boolean/string|--|false
