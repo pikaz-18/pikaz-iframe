@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:42:17
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 11:35:23
+ * @LastEditTime: 2020-06-05 11:20:57
  * @Description: 这是iframe-demo组件（页面）
 --> 
 <template>
@@ -80,7 +80,8 @@ export default {
   -moz-border-radius: 2em;
   border-radius: 2em;
 }
-      `
+      `,
+        height: "300px"
       },
       setting5: {
         src: "https://m.baidu.com/"

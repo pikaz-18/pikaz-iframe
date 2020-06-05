@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:24:51
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-04 11:44:54
+ * @LastEditTime: 2020-06-05 11:20:23
  * @Description: 这是iframe组件（页面）
 --> 
 <script>
@@ -64,19 +64,20 @@ export default {
   computed: {
     // 是否隐藏滚动条
     hideScrollBar () {
-      if (this.hideScrolling) {
-        if (Object.prototype.toString.call(this.hideScrolling) === "[object String]") {
-          return { width: `calc(100% + ${this.hideScrolling})` }
+      if (this.setting.hideScrolling) {
+        if (Object.prototype.toString.call(this.setting.hideScrolling) === "[object String]") {
+          return { width: `calc(100% + ${this.setting.hideScrolling})` }
         } else {
           return { width: `calc(100% + 18px)` }
         }
       }
+      return {}
     },
     // iframe参数处理
     attrs () {
       const attr = {}
       Object.keys(this.setting).forEach(key => {
-        if (key !== 'hideScrolling' || key !== 'onload' || key !== 'css') {
+        if (key !== 'hideScrolling' || key !== 'onload' || key !== 'css' || key !== 'srcdoc' || key !== 'src') {
           attr[key] = this.setting[key]
         }
         // 处理css样式
