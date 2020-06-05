@@ -2,7 +2,7 @@
  * @Author: zouzheng
  * @Date: 2020-06-01 14:24:51
  * @LastEditors: zouzheng
- * @LastEditTime: 2020-06-05 14:13:37
+ * @LastEditTime: 2020-06-05 14:18:23
  * @Description: 这是iframe组件（页面）
 --> 
 <script>
@@ -77,7 +77,7 @@ export default {
     attrs () {
       const attr = {}
       Object.keys(this.setting).forEach(key => {
-        if (!(key === 'hideScrolling' || key === 'onload' || key === 'css')) {
+        if (!(key === 'hideScrolling' || key === 'css')) {
           attr[key] = this.setting[key]
         }
         // 处理css样式
