@@ -29,7 +29,7 @@ npm i -S pikaz-iframe
 
 ## For Vue-cli
 ``` html
-<pikaz-iframe :setting="setting">
+<pikaz-iframe :setting="setting" @onload="onload">
 </pikaz-iframe>
 ```
 .vue file:
@@ -43,10 +43,10 @@ npm i -S pikaz-iframe
         data () {
           return {
             setting:{
-              src: "https://m.baidu.com/",
-              onload: ()=> {
+              src: "https://m.baidu.com/"
+            },
+            onload: ()=> {
                 console.log("载入成功")
-              }
             }
           }
         }
@@ -61,7 +61,6 @@ sandbox|启用iframe中内容的额外限制,传入空字符串则对所有权�
 src|被嵌套的页面的 URL 地址|string|--|--
 srcdoc|html内容|string|--|--
 hideScrolling|是否隐藏滚动条，传入true默认隐藏18px宽的滚动条，如需隐藏其他宽度滚动条，则传入宽度如"20px"|boolean/string|--|false
-onload|iframe加载完成时的钩子|funtion|--|--
 css|传入html内容时，需修改的css样式，如"div{color:red;}"|string|--|--
 更多设置选项请查看[MDN-iframe](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
 
